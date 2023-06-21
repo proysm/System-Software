@@ -1,1 +1,1 @@
-![그림 테스트](file:///Users/sumin/Desktop/그림1.jpg)
+![그림 테스트](/Users/sumin/Desktop/그림1.jpg)
