@@ -1,4 +1,3 @@
-// ÅÒÇÁ·ÎÁ§Æ® 2021111954 ÄÄÇ»ÅÍ°øÇÐ°ú À¯¼ö¹Î
 #include "header.h"
 
 int main(int argc, char* argv[]) {
@@ -15,19 +14,19 @@ int main(int argc, char* argv[]) {
 
 	// Symbol Table
 	vector<smbInfo> symbolT;
-	string startAd; // ÇÁ·Î±×·¥ ½ÃÀÛ ÁÖ¼Ò
+	string startAd; // ï¿½ï¿½ï¿½Î±×·ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ö¼ï¿½
 	int locctr;
 
 	// IntFile
 	string pLength; // pLength = locctr - startAd
-	vector<intInfo> intT; // text record ÀúÀå
+	vector<intInfo> intT; // text record ï¿½ï¿½ï¿½ï¿½
 
 	// Object File
 	string objfile;
 	objfile = "OBJFILE";
-	string orStartAd, // ·¹ÄÚµå¿¡ Æ÷ÇÔµÉ ¸ñÀûÄÚµåÀÇ ½ÃÀÛÁÖ¼Ò
-		   obCodes; // ¸ñÀûÄÚµå 
-	int orLength = 0; // ·¹ÄÚµåÀÇ ±æÀÌ
+	string orStartAd, // ï¿½ï¿½ï¿½Úµå¿¡ ï¿½ï¿½ï¿½Ôµï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Úµï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ö¼ï¿½
+		   obCodes; // ï¿½ï¿½ï¿½ï¿½ï¿½Úµï¿½ 
+	int orLength = 0; // ï¿½ï¿½ï¿½Úµï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 
 
 
@@ -35,7 +34,7 @@ int main(int argc, char* argv[]) {
 	// Pass 1
 	// -------------------------------------------------------------------------------------------------------------------
 	
-	// Source File À» ÀÐ°í label, opcode, operand ºÐ¸®
+	// Source File ï¿½ï¿½ ï¿½Ð°ï¿½ label, opcode, operand ï¿½Ð¸ï¿½
 	ifstream sFile(srcfile);
 	if (sFile.is_open())
 	{
@@ -46,28 +45,28 @@ int main(int argc, char* argv[]) {
 			temp.opcode = line.substr(9, 8);
 			temp.operand = line.substr(17);
 			
-			// label opcode operand °ø¹é Á¦°Å
+			// label opcode operand ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 			(temp.label).erase(remove((temp.label).begin(), (temp.label).end(), ' '), (temp.label).end());
 			(temp.opcode).erase(remove((temp.opcode).begin(), (temp.opcode).end(), ' '), (temp.opcode).end());
 			(temp.operand).erase(remove((temp.operand).begin(), (temp.operand).end(), ' '), (temp.operand).end());
 
-			// L2U: ¼Ò¹®ÀÚ -> ´ë¹®ÀÚ º¯°æ 
+			// L2U: ï¿½Ò¹ï¿½ï¿½ï¿½ -> ï¿½ë¹®ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ 
 			for (int i = 0; i < (temp.label).size(); i++)
 				temp.label[i] = toupper(temp.label[i]);
 			for (int i = 0; i < (temp.opcode).size(); i++)
 				temp.opcode[i] = toupper(temp.opcode[i]);
 			for (int i = 0; i < (temp.operand).size(); i++)
 				temp.operand[i] = toupper(temp.operand[i]);
-			//vector¿¡ ÀúÀå
+			//vectorï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 			srcT.emplace_back(temp);
 		}
 	}
 	else
 	{
-		cout << "ÆÄÀÏÀ» ½ÇÇàÇÒ ¼ö ¾ø½À´Ï´Ù.";
+		cout << "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½.";
 	}
 	
-	// OptableÀ» ÀÐÀ½
+	// Optableï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 	ifstream oFile("Optab.txt");
 	if (oFile.is_open())
 	{
@@ -85,7 +84,7 @@ int main(int argc, char* argv[]) {
 		oFile.close();
 	}
 	
-	// ½ÃÀÛ ÁÖ¼Ò ÃÊ±âÈ­ -> startAd
+	// ï¿½ï¿½ï¿½ï¿½ ï¿½Ö¼ï¿½ ï¿½Ê±ï¿½È­ -> startAd
 	if (srcT[0].opcode == "START")
 	{
 		startAd = srcT[0].operand;
@@ -97,7 +96,7 @@ int main(int argc, char* argv[]) {
 		locctr = stoi(startAd);
 	}
 	
-	// Source fileÀÇ ¸ðµç ·¹ÀÌºí¿¡ ¹èÁ¤µÈ ÁÖ¼Ò °ªµéÀ» ÀúÀåÇÑ´Ù.
+	// Source fileï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ìºï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ö¼ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ñ´ï¿½.
 	int num = strTodec(startAd);
 	srcT[0].counter = "";
 	for (int i = 1; i < srcT.size(); i++)
@@ -108,25 +107,25 @@ int main(int argc, char* argv[]) {
 		num += 3;
 	}
 	
-	// Symbol Table ÀÛ¼º : OPCODE°¡ ENDÀÏ ¶§±îÁö ¹Ýº¹ 
+	// Symbol Table ï¿½Û¼ï¿½ : OPCODEï¿½ï¿½ ENDï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ýºï¿½ 
 	int i = 1;
 	while (srcT[i].opcode != "END")
 	{
 		smbInfo temp;
-		// Symbol Table¿¡ ÀÌ¹Ì ÀÖ´Â labelÀÎÁö È®ÀÎ
+		// Symbol Tableï¿½ï¿½ ï¿½Ì¹ï¿½ ï¿½Ö´ï¿½ labelï¿½ï¿½ï¿½ï¿½ È®ï¿½ï¿½
 		for (int j = 0; j < symbolT.size(); j++)
 		{
-			// ÀÖ´Ù¸é ¿À·ù ¹ÝÈ¯
+			// ï¿½Ö´Ù¸ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½È¯
 			if (srcT[i].label == symbolT[j].label) return 0;
 		}
 
-		// ¾ø´Ù¸é Symbol TableÀ» ÀÛ¼º
+		// ï¿½ï¿½ï¿½Ù¸ï¿½ Symbol Tableï¿½ï¿½ ï¿½Û¼ï¿½
 		temp.label = srcT[i].label;
 		temp.address = srcT[i].counter;
 		if (srcT[i].label != "") symbolT.emplace_back(temp);
 
 
-		// LOCCTR °è»ê
+		// LOCCTR ï¿½ï¿½ï¿½
 		if (opTab.end() != opTab.find(srcT[i].opcode))locctr += 3;
 		else if (srcT[i].opcode == "WORD" || srcT[i].opcode == "RESW") locctr += 3;
 		else if (srcT[i].opcode == "RESB")locctr += stoi(srcT[i].operand);
@@ -135,7 +134,7 @@ int main(int argc, char* argv[]) {
 		
 		i++;
 
-		// END¿¡ À¯È¿ÇÑ labelÀÌ ÀÖ´Â °æ¿ìÀÎÁö È®ÀÎ
+		// ENDï¿½ï¿½ ï¿½ï¿½È¿ï¿½ï¿½ labelï¿½ï¿½ ï¿½Ö´ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ È®ï¿½ï¿½
 		if (srcT[i].opcode == "END" && srcT[i].label != "")
 		{
 			temp.label = srcT[i].label;
@@ -144,14 +143,14 @@ int main(int argc, char* argv[]) {
 		}		
 	}
 	
-	// Symbol TableÀ» È®ÀÎÇÏ±â À§ÇÑ Ãâ·Â
+	// Symbol Tableï¿½ï¿½ È®ï¿½ï¿½ï¿½Ï±ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½
 	for (int i = 0; i < symbolT.size(); i++)
 	{
 		cout << symbolT[i].address << " " << symbolT[i].label << "\n";
 	}
 
 
-	// Áß°£ ÆÄÀÏ ÀÛ¼º
+	// ï¿½ß°ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Û¼ï¿½
 	ofstream fout(intfile);
 	for (int i = 0; i < srcT.size(); i++)
 	{
@@ -161,10 +160,10 @@ int main(int argc, char* argv[]) {
 	}
 	fout.close();
 
-	// ÇÁ·Î±×·¥ ±æÀÌ ÀúÀå
-	int pl = locctr - stoi(startAd); // 10Áø¼ö
+	// ï¿½ï¿½ï¿½Î±×·ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+	int pl = locctr - stoi(startAd); // 10ï¿½ï¿½ï¿½ï¿½
 	pLength = decTohex(pl);
-	cout << "The length of Program: " << pLength; // 16Áø¼ö
+	cout << "The length of Program: " << pLength; // 16ï¿½ï¿½ï¿½ï¿½
 
 
 
@@ -172,7 +171,7 @@ int main(int argc, char* argv[]) {
 	// Pass 2
 	// -------------------------------------------------------------------------------------------------------------------
 
-	// Áß°£ ÆÄÀÏ INTFILE À» ÀÐ´Â´Ù.
+	// ï¿½ß°ï¿½ ï¿½ï¿½ï¿½ï¿½ INTFILE ï¿½ï¿½ ï¿½Ð´Â´ï¿½.
 	ifstream iFile(intfile);
 	string progName;
 	
@@ -221,7 +220,7 @@ int main(int argc, char* argv[]) {
 		}
 	}
 
-	// Object File ÀÛ¼º
+	// Object File ï¿½Û¼ï¿½
 	ofstream fout2(objfile);
 	
 	// H
@@ -268,7 +267,7 @@ int main(int argc, char* argv[]) {
 			}
 		}
 
-		if (opTab[intT[i].opcode] == "3C") // J¸¦ ¸¸³µÀ» ¶§
+		if (opTab[intT[i].opcode] == "3C") // Jï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½
 		{
 			flag = true;
 			fout2 << "T" << make6(orStartAd) << make2(decTohex(orLength / 2));
@@ -278,15 +277,15 @@ int main(int argc, char* argv[]) {
 			orLength = 0;
 			fout2 << "\n";
 		}
-		else if (orLength == 60) // ÃÖ´ë 1E (half byte)
+		else if (orLength == 60) // ï¿½Ö´ï¿½ 1E (half byte)
 		{
 			flag = true;
 			fout2 << "T" << make6(orStartAd) << make2(decTohex(orLength / 2));
 			fout2 << obCodes;
 
-			obCodes = ""; // ¸ñÀûÄÚµå ÃÊ±âÈ­
-			orLength = 0; // ÄÚµå ±æÀÌ ÃÊ±âÈ­
-			fout2 << "\n"; // ÁÙ¹Ù²Þ
+			obCodes = ""; // ï¿½ï¿½ï¿½ï¿½ï¿½Úµï¿½ ï¿½Ê±ï¿½È­
+			orLength = 0; // ï¿½Úµï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ê±ï¿½È­
+			fout2 << "\n"; // ï¿½Ù¹Ù²ï¿½
 		}
 		else
 		{
