@@ -23,6 +23,9 @@
 #### 3. OBJFILE
 - Pass2의 출력으로, 파일 형태로 출력한다.
 - <img src = "image/objfile.png">
+<br>
 
-### 사용언어
-C++
+### 알고리즘
+#### 1. 사용 언어 : C++
+#### 2. 소스 파일 : main.cpp, header.h
+#### 3. 출력 파일 : INTFILE, OBJFILE, SRCFILE
