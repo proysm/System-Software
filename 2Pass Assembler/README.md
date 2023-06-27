@@ -1,5 +1,10 @@
 # 2Pass Assembler
 
+### 설명
+- 2Pass Assembler의 동작과정을 이해하고 직접 구현해 본다.
+- *SIC(소스파일)* 과 *operand table* 을 입력받아서 *symbol table, intfile(중간파일), objfile(목적파일)* 을 출력한다.
+
+
 ### 입력
 #### 1. 소스파일(SIC) 
 - SIC 시뮬레이터에서 사용하는 소스파일 형식 그대로 사용한다.
