@@ -51,7 +51,6 @@
 - memory의 한 주소 안에 연산자(명령어)와 피연산자를 모두 담는다. 
 - 8 번째 메모리는 STA 8 명령어로 8 번째 메모리에 AC 레지스터 값을 저장한다.
 - 8 번째 메모리는 오버플로우가 발생한 것을 확인할 수 있다.
-<br>
 <img src = "image/acA.png">
 <img src = "image/commandA.png">
 
@@ -65,10 +64,8 @@
 - memory의 한 주소 안에 연산자(명령어)와 피연산자를 모두 담는다. 
 - 8 번째 메모리는 STA 8 명령어로 8 번째 메모리에 AC 레지스터 값을 저장한다.
 - 8 번째 메모리는 오버플로우가 발생한 것을 확인할 수 있다.
-<br>
 <img src = "image/acB.png">
 <img src = "image/commandB.png">
-
 <br>
 
 ### 알고리즘
