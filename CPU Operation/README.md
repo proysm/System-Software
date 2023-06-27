@@ -58,8 +58,10 @@
 > 명령어 파일2(PROGB.txt)
 - PROGB.txt <br>
 <img src = "image/proga.png">
+
 - AC register 값 확인 <br>
 <img src = "image/registerB.png">
+
 - memory의 한 주소 안에 연산자(명령어)와 피연산자를 모두 담는다. 
 - 8 번째 메모리는 STA 8 명령어로 8 번째 메모리에 AC 레지스터 값을 저장한다.
 - 8 번째 메모리는 오버플로우가 발생한 것을 확인할 수 있다.
