@@ -23,16 +23,11 @@
 
 ### 코드 구조
 > CPU16.h
-1. **clss CPU16** 
- - Cpu 역할을 한다.
-2. **class Memory** 
- - Memory 역할을 한다.
-3. **int strTodec(string str)** 
- - 16진수로 표현된 숫자를 10진수 표현으로 바꾼다.
-4. **string decTohex(int num)**
- - 10진수로 표현된 숫자를 2진수 표현으로 바꾼다.
-5. **string decTobin(int num)** 
- - 10진수로 표현된 숫자를 16진수 표현으로 바꾼다.
+1. **clss CPU16** : Cpu 역할을 한다.
+2. **class Memory** : Memory 역할을 한다.
+3. **int strTodec(string str)** : 16진수로 표현된 숫자를 10진수 표현으로 바꾼다.
+4. **string decTohex(int num)** : 10진수로 표현된 숫자를 2진수 표현으로 바꾼다.
+5. **string decTobin(int num)** : 10진수로 표현된 숫자를 16진수 표현으로 바꾼다.
 > test.cpp
  - class CPU16과 memory의 객체를 만든다.
  - 실행 프로그램을 입력하고 계산을 수행한다.
